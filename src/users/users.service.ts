@@ -16,4 +16,10 @@ export class UsersService {
     async findAll(): Promise<User[]> {
         return this.userModel.find().exec();
     }
+
+     deleteById(id: string): Promise<object> {
+        const deleted =  this.userModel.deleteOne({ _id: id }).exec();
+
+        return deleted;
+    }
 }

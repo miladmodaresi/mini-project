@@ -22,8 +22,8 @@ export class UsersController {
     }
 
     @Delete(':id')
-    remove(@Param('id') id: string) {
-      return `This action removes a #${id} cat`;
+    async remove(@Param('id') id: string,@Res() res: Response) {
+        res.status(HttpStatus.ACCEPTED).json(await this.usersService.deleteById(id));
     }
   
 }
